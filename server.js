@@ -10,9 +10,18 @@ const bookRoute = require("./routes/book");
 
 dotenv.config();
 //CONNECT DATABASE
-mongoose.connect(process.env.MONGODB_URL, () => {
-  console.log("Connect to MongoDb");
-});
+mongoose.connect(
+  process.env.MONGODB_URL,
+  {
+    useCreateIndex: true,
+    useFindAndModify: false,
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  },
+  () => {
+    console.log("Connect to MongoDb");
+  }
+);
 
 app.use(bodyParser.json({ limit: "50mb" }));
 app.use(cors());
