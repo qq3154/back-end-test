@@ -19,8 +19,8 @@ const bookController = {
   //GET ALL BOOKS
   getAllBooks: async (req, res) => {
     try {
-      const books = await Book.find();
-      res.status(200).json(books);
+      //const books = await Book.find();
+      res.status(200).json("books");
     } catch (err) {
       res.status(500).json(err);
     }
