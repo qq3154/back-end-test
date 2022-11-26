@@ -10,16 +10,15 @@ const bookRoute = require("./routes/book");
 
 dotenv.config();
 //CONNECT DATABASE
+const URL = process.env.MONGODB_URL;
 mongoose.connect(
-  process.env.MONGODB_URL,
+  URL,
   {
-    useCreateIndex: true,
-    useFindAndModify: false,
     useNewUrlParser: true,
-    useUnifiedTopology: true,
   },
-  () => {
-    console.log("Connect to MongoDb");
+  (err) => {
+    if (err) throw err;
+    console.log("Connected to MongoDB");
   }
 );
 
@@ -32,5 +31,5 @@ app.use("/v1/author", authorRoute);
 app.use("/v1/book", bookRoute);
 
 app.listen(process.env.PORT || 8000, () => {
-  console.log("Express is working on port " + process.env.PORT);
+  console.log("Express is working on port " + URL);
 });
