@@ -23,5 +23,5 @@ app.use("/v1/author", authorRoute);
 app.use("/v1/book", bookRoute);
 
 app.listen(process.env.PORT || 8000, () => {
-  console.log("Server is running...");
+  console.log("Express is working on port " + process.env.PORT);
 });
